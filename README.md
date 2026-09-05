@@ -1,4 +1,4 @@
-# R&D Assignment — Parametric Curve Fit
+# R&D — Parametric Curve Fit
 
 ## Answer
 
