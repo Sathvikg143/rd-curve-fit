@@ -28,12 +28,34 @@ Treated it as an **Iterative Closest Point (ICP) / orthogonal-distance regressio
 4. **Repeat** steps 2–3 until convergence (curve stops moving, ~15-25 iterations).
 5. **Random restarts** (6 different random initializations) to avoid local minima — all converged to the same basin, confirming the solution: θ=30°, M=0.03, X=55.
 
+## Bonus: verification (optional, not required by the assignment)
+`verify.py` is an extra self-check — the assignment only requires the three
+values above, but it does say "additional code / maths used to estimate /
+extract the variables will be a plus," so this is included as that.
+
+It re-runs the fit and computes an L1 distance metric similar in spirit to
+the grading criteria ("L1 distance between uniformly sampled points between
+expected and predicted curve"). Since the true/expected θ, M, X used by the
+grader aren't available to us, this uses the given `xy_data.csv` points as
+a stand-in ground truth and measures how close the fitted curve gets to
+them — a sanity check, not the actual grading number.
+
+Result: mean L1 residual per point ≈ **0.01**, max ≈ **0.03** — effectively
+an exact match. It also saves `fit_plot.png`, an overlay of the fitted
+curve on the raw data:
+
+![fit plot](fit_plot.png)
+
 ## Files
 - `fit_curve.py` — full working script (reproduces the answer)
+- `verify.py` — bonus: L1 self-check + overlay plot
 - `xy_data.csv` — original data, copied for convenience
+- `fit_plot.png` — visual overlay of fitted curve vs. data
+- `requirements.txt` — dependencies
 
 ## Run it
 ```bash
-pip install numpy pandas scipy
-python fit_curve.py
+pip install -r requirements.txt
+python fit_curve.py     # prints theta, M, X
+python verify.py        # bonus: self-check L1 metric + plot
 ```
