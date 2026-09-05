@@ -14,7 +14,7 @@
 ```
 Domain: `6 ≤ t ≤ 60`
 
-Fit quality: mean point-to-curve distance ≈ 0.0003 (i.e. residual is just numerical grid noise — an effectively exact match).
+Fit quality: mean point-to-curve distance ≈ 0.01
 
 ## Problem
 `xy_data.csv` gives 1500 `(x, y)` points sampled from the curve for `6 < t < 60`, but the rows are **not** ordered by `t` (row order ≠ curve order) and no `t` value is given per row. So this isn't a simple curve_fit — the correspondence between each data point and its `t` is itself unknown and has to be recovered.
